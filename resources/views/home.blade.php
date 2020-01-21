@@ -12,12 +12,14 @@
         <!-- Styles -->
         <style>
             html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
+                background: url("public/image/1.png");
+                background-size: cover;
+                font-family: 'Microsoft JhengHei', sans-serif;
+                font-weight: 100;
+                font-weight:bold;
                 margin: 0;
+                width: 100%;
+                height: 100px;
             }
 
             .full-height {
@@ -50,7 +52,7 @@
             .links > a {
                 color: #636b6f;
                 padding: 0 25px;
-                font-size: 13px;
+                font-size: 16px;
                 font-weight: 600;
                 letter-spacing: .1rem;
                 text-decoration: none;
@@ -63,7 +65,7 @@
             .log{
                 color: #636b6f;
                 padding: 0 25px;
-                font-size: 12px;
+                font-size: 16px;
                 font-weight: 600;
                 letter-spacing: .1rem;
                 text-decoration: none;
@@ -94,24 +96,16 @@
 
                 <div class="content">
                     <div class="title m-b-md">
-                        購屋網
+                        台中房屋
                     </div>
                     <div class="links">
                         <a href="{{ url("/demographics") }}">人口統計資料</a>
+                        <a href="{{ url("/estate") }}">房地產資料</a>
                         @php
                             $id = Auth::user()->id;
                         @endphp
                         <a href="{{ url("authority/person?id=".$id) }}">個人資料</a>
-                        {{-- @if(Auth::user()->role =='1admin' || Auth::user()->role =='2user') --}}
-                            <a href="{{ url('/authority') }}">權限</a>
-                        {{-- @endif --}}
-                        {{-- <a href="https://laracasts.com">Laracasts</a>
-                        <a href="https://laravel-news.com">News</a>
-                        <a href="https://blog.laravel.com">Blog</a>
-                        <a href="https://nova.laravel.com">Nova</a>
-                        <a href="https://forge.laravel.com">Forge</a>
-                        <a href="https://vapor.laravel.com">Vapor</a>
-                        <a href="https://github.com/laravel/laravel">GitHub</a> --}}
+                        <a href="{{ url('/authority') }}">權限</a>
                     </div>
                 </div>
             </div>

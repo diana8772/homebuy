@@ -22,3 +22,4 @@ Route::match(['get', 'post'],'/home','HomeController@index')->name('home');
 Route::match(['get', 'post'],'/authority','authorityController@index');
 Route::match(['get', 'post'],'/authority/person','authorityController@person');
 Route::match(['get', 'post'],'/demographics','demographicsController@index');
+Route::match(['get', 'post'],'/estate','estateController@index');
