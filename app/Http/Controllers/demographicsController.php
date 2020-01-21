@@ -27,19 +27,12 @@ class demographicsController extends Controller
      */
     public function index(Request $request)
     {
-        if($request->has('logout'))
-        {
+        if($request->has('logout')){
             Auth::logout();
             return redirect('');
         }
-        if($request->has('year'))
-            $year=$request->input('year');
-        else
-            $year=108;
-        if($request->has('month'))
-            $month=str_pad($request->input('month'),2,'0',STR_PAD_LEFT);
-        else
-            $month=12;
+        $year = ($request->has('year')?$request->input('year'):108);
+        $month = ($request->has('month')?str_pad($request->input('month'),2,'0',STR_PAD_LEFT):12);
         $data = DB::table("demographics")
                   ->where('date', $year.$month)
                   ->get();
@@ -51,10 +44,6 @@ class demographicsController extends Controller
         $number = $charts->pluck('總計');
         $local = json_encode($local);
         $number = json_encode($number);
-                    
-
-        // dd($local,$number);
-
         return view('demographics',
             compact(
                 'data',

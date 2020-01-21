@@ -31,11 +31,7 @@ class authorityController extends Controller
             Auth::logout();
             return redirect('');
         }
-        if($request->has('edit'))
-            $edit = $request->has('edit');
-        else
-            $edit = '';
-
+        $edit = ($request->has('edit')?$request->has('edit'):'');
         if($request->has('edit_save')){
              $edit_save = key($request->input('edit_save'));
              $role = $request->input('role');
@@ -57,15 +53,15 @@ class authorityController extends Controller
         $auth = auth()->user()->role;
         if($auth == '1admin'){
             $users = DB::table("users")
-                      ->select('id',
-                               'name',
-                               'email',
-                               'role',
-                               'created_at',
-                               'updated_at'
-                               )
-                      ->orderBy('role', 'asc')
-                      ->get();
+                       ->select('id',
+                                'name',
+                                'email',
+                                'role',
+                                'created_at',
+                                'updated_at'
+                                )
+                       ->orderBy('role', 'asc')
+                       ->get();
         }elseif($auth == '2user'){
             $users = DB::table("users")
                        ->select('id',
@@ -103,8 +99,8 @@ class authorityController extends Controller
             Auth::logout();
             return redirect('');
         }
-        $person_data=0;
-        $person_data1=0;
+        $person_data = 0;
+        $person_data1 = 0;
         if($request->has('id')) $id = $request->input('id');
         if($request->has('fullname')) $fullname = $request->input('fullname');
         if($request->has('date')) $date = $request->input('date');
@@ -125,24 +121,24 @@ class authorityController extends Controller
                 if($check == 0){
                     DB::table("person_data")
                       ->insert([
-                            'id' => $insert_id,
-                            'name' => $fullname,
-                            'birthday' => $date,
-                            'sexuality' => $sexuality,
-                            'phone' => $phone,
-                            'email' => $email,
-                            'address' => $address,
+                          'id' => $insert_id,
+                          'name' => $fullname,
+                          'birthday' => $date,
+                          'sexuality' => $sexuality,
+                          'phone' => $phone,
+                          'email' => $email,
+                          'address' => $address,
                       ]);
                     $status = 200; //新增成功
                 }else{
                     DB::table("person_data")
                       ->where('id', $insert_id)
                       ->update([
-                            'name' => $fullname,
-                            'birthday' => $date,
-                            'sexuality' => $sexuality,
-                            'phone' => $phone,
-                            'address' => $address,
+                          'name' => $fullname,
+                          'birthday' => $date,
+                          'sexuality' => $sexuality,
+                          'phone' => $phone,
+                          'address' => $address,
                       ]);
                     $status = 201; //更新成功
                 }
@@ -151,29 +147,28 @@ class authorityController extends Controller
                            ->get();
                 $check = count($check);
             }
-            
         }
         if($check == 0){
             $person_data = DB::table("users")
-                         ->select('id',
-                                  'name',
-                                  'email',
-                                  )
-                         ->where('id',$id)
-                         ->get();
+                             ->select('id',
+                                      'name',
+                                      'email',
+                                      )
+                             ->where('id',$id)
+                             ->get();
             $person_data = $person_data[0];
         }else{
             $person_data1 = DB::table("person_data")
-                              ->select('id',
-                                       'name',
-                                       'birthday',
-                                       'sexuality',
-                                       'phone',
-                                       'email',
-                                       'address',
-                                       )
-                              ->where('id',$id)
-                              ->get();
+                               ->select('id',
+                                        'name',
+                                        'birthday',
+                                        'sexuality',
+                                        'phone',
+                                        'email',
+                                        'address',
+                                        )
+                               ->where('id',$id)
+                               ->get();
             $person_data1 = $person_data1[0];
         }
         return view('person',

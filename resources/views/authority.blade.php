@@ -3,69 +3,14 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
         <title>Laravel</title>
-
-        <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
         <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">  
-    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <style>
-            .full-height {
-                height: 30vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display:  -webkit-flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-            .log{
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-                background: none;
-                border: none;
-            }
-        </style>
+        <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="{{ asset('public/css/app.css') }}">
     </head>
+    <style type="text/css"></style>
     <body>
         <form id="form" name="query" method="post">
         {{ csrf_field() }}
@@ -84,7 +29,6 @@
                         @endauth
                     </div>
                 @endif
-
                 <div class="content">
                     @php
                         if(Request::has("id"))
@@ -94,7 +38,7 @@
                         if(Request::has("edit"))
                             $edit = key(Request::input("edit"));
                     @endphp
-                    <table class="table table-bordered" style="width: 90%;position:absolute; top:40%; left:5%;">
+                    <table class="table table-bordered" style="width: 90%;position:absolute;top:10%;left:5%;">
                         <thead>
                             <tr>
                                 <th style="text-align: center;">功能</th>
@@ -107,7 +51,7 @@
                         </thead>
                         <tbody>
                             @php
-                                $no=1;
+                                $no = 1;
                             @endphp
                             @foreach($users as $row)
                                 <tr @if($no%4==1) class="warning" @elseif($no%4==2) class="info" @elseif($no%4==3) class="danger" @else class="sccess" @endif>
@@ -161,9 +105,9 @@
                                     <td style="vertical-align: middle;">{{ $row->created_at }}</td>
                                     <td style="vertical-align: middle;">{{ $row->updated_at }}</td>
                                 </tr>
-                            @php
-                                $no+=1;
-                            @endphp
+                                @php
+                                    $no+=1;
+                                @endphp
                             @endforeach
                         </tbody>
                     </table>

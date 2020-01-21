@@ -3,85 +3,23 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Laravel</title>
-
-        <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
         <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">  
-    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://cdn.bootcss.com/moment.js/2.18.1/moment-with-locales.min.js"></script>
-    <link href="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
-    <script type="text/javascript" src="{{ asset('public/js/Chart.js') }} "></script>
-    <script type="text/javascript" src="{{ asset('public/js/Chart.bundle.js') }} "></script>
-    <script type="text/javascript" src="{{ asset('public/js/Chart.bundle.min.js') }} "></script>
-    <script type="text/javascript" src="{{ asset('public/js/Chart.min.js') }} "></script>
-    <script type="text/javascript"></script>
+        <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+        <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://cdn.bootcss.com/moment.js/2.18.1/moment-with-locales.min.js"></script>
+        <link href="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+        <script type="text/javascript" src="{{ asset('public/js/Chart.js') }} "></script>
+        <link rel="stylesheet" type="text/css" href="{{ asset('public/css/app.css') }}">
+        <script type="text/javascript"></script>
         <script type="text/javascript">
             function MM_o(selObj){
                 location.href=(selObj.options[selObj.selectedIndex].value);
             }
         </script>
-        <style>
-            .flex-center {
-                align-items: center;
-                display:  -webkit-flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-            .log{
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-                background: none;
-                border: none;
-            }
-            .tabletrstyle{
-                text-align: right;
-                height: 15px;
-                padding: 3px !important;
-                vertical-align: middle !important;
-            }
-        </style>
     </head>
     <body>
         <form id="form" name="query" method="post">
@@ -113,7 +51,7 @@
                         else
                             $month = 12;
                     @endphp
-                    <table class="table table-bordered" style="width: 90%;position:absolute; top:30%; left:5%;margin-top: 90px">
+                    <table class="table table-bordered" style="width: 90%;position:absolute; top:0%; left:5%;margin-top: 90px">
                         <tr>
                             <th colspan="23" style="text-align: center;font-size: 20PX;" bgcolor="#86cfda">臺中市人口統計</th>
                         </tr>
