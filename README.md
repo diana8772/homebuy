@@ -14,7 +14,7 @@
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/register頁面.png)
 ## Register - 密碼必須符合條件  
 *少於8個字  
-![image](https://github.com/diana8772/homebuy/blob/master//public/imageregister_少於8位數.png)  
+![image](https://github.com/diana8772/homebuy/blob/master//public/image/register_少於8位數.png)  
 *多於20個字  
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/register_多於20位數.png)  
 *沒有包含一位以上的數字、大寫英文字、小寫英文字及特殊符號  
