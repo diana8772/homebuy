@@ -8,7 +8,10 @@
         <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script src="https://cdn.bootcss.com/moment.js/2.18.1/moment-with-locales.min.js"></script>
+        <link href="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+        <script src="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
         <link rel="stylesheet" type="text/css" href="{{ asset('public/css/app.css') }}">
+
         <script type="text/javascript">
             $(function(){
                 $('#date1').datetimepicker({
@@ -76,7 +79,7 @@
                         <tr>
                             <th align="center" bgcolor="#ed969e">生日 <font color="red">*</font></th>
                             <td align="left">
-                                <div class="input-group date" id='date1'>
+                                <div class="input-group date" id='date1' style="width: 26%">
                                     @if(Auth::user()->id == $id)
                                         @if($check == 0)
                                             <input type="text" class="form-control" name="date" id="date">

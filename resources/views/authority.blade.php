@@ -10,7 +10,16 @@
         <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <link rel="stylesheet" type="text/css" href="{{ asset('public/css/app.css') }}">
     </head>
-    <style type="text/css"></style>
+    <script type="text/javascript">
+        function del1() { 
+            var msg = "確定要刪除嗎？\n\n請確認！"; 
+            if (confirm(msg)==true){ 
+                return true; 
+            }else{ 
+                return false; 
+            } 
+        }
+    </script>
     <body>
         <form id="form" name="query" method="post">
         {{ csrf_field() }}

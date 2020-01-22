@@ -19,6 +19,13 @@
             function MM_o(selObj){
                 location.href=(selObj.options[selObj.selectedIndex].value);
             }
+            function insert1() { 
+                var selectedValues = $('select[id="select_local"]').val() || [];
+                // document.getElementById("myElement").innerHTML = selectedValues;
+                document.getElementById('myElement').value=selectedValues;
+                return true;
+            }
+            
         </script>
     </head>
     <body>
@@ -50,14 +57,18 @@
                             $month = Request::input("month");
                         else
                             $month = 12;
+                        if(Request::has("select_local"))
+                            $select_local = Request::input("select_local");
+                        else
+                            $select_local = '';
                     @endphp
                     <table class="table table-bordered" style="width: 90%;position:absolute; top:0%; left:5%;margin-top: 90px">
                         <tr>
                             <th colspan="23" style="text-align: center;font-size: 20PX;" bgcolor="#86cfda">臺中市人口統計</th>
                         </tr>
                         <tr>
-                            <td colspan="23">
-                                <select onChange="MM_o(this)">
+                            <td colspan="22">
+                                <select onChange="MM_o(this)" id="year">
                                     @for($j = 108;$j>=107;$j--)
                                         @if($j==$year)
                                             <option value="demographics?year={{$j}}&month={{$month}}" selected>{{ $j }}</option>
@@ -74,7 +85,24 @@
                                             <option value="demographics?year={{$year}}&month={{$i}}">{{ $i }}</option>
                                         @endif
                                     @endfor
-                                </select> 月
+                                </select> 月   地區：
+                                <select multiple="multiple" id="select_local" size="6" style="width: 20%">
+                                    @if($select_local == "")
+                                        <option value="{{''}}" selected>全部</option>
+                                    @else
+                                        <option value="{{''}}">全部</option>
+                                    @endif
+                                    @foreach($locals as $row)
+                                        @if($row==$select_local)
+                                            <option value="{{$row}}" selected>{{ $row }}</option>
+                                        @else
+                                            <option value="{{$row}}">{{ $row }}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                                <input type="submit" value="查詢" class="btn btn-success" name='insert_save' onclick="javascript:return insert1()">
+                                <input type="text" id="myElement" name="select_locals" hidden="">
+                                
                             </td>
                         </tr>
                         <tr>

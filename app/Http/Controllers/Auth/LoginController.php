@@ -36,9 +36,7 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
-
     }
     protected $maxAttempts = 2;
     protected $decayMinutes = 1;
-
 }
