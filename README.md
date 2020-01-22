@@ -5,6 +5,7 @@
 3.MySQL 5.7.26  
 4.PHP 7.3.5  
 5.Laravel 6.11.0  
+
 ##首頁  
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/welcome頁面.png)
 右上角有Login與Register的功能  
