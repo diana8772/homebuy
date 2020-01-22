@@ -75,7 +75,7 @@
                                     @else
                                         <option value="estate?select_loccal={{''}}&year={{$year}}&month={{$month}}&minunit={{$minunit}}&maxunit={{$maxunit}}&minarea={{$minarea}}&maxarea={{$maxarea}}">全部</option>
                                         @for($t=0;$t<count($local);$t++)
-                                            @if($t==$select_loccal)
+                                            @if($t == $select_loccal)
                                                 <option value="estate?select_loccal={{$local[$t]}}&year={{$year}}&month={{$month}}&minunit={{$minunit}}&maxunit={{$maxunit}}&minarea={{$minarea}}&maxarea={{$maxarea}}" selected>{{ $local[$t] }}</option>
                                             @else
                                                 <option value="estate?select_loccal={{$local[$t]}}&year={{$year}}&month={{$month}}&minunit={{$minunit}}&maxunit={{$maxunit}}&minarea={{$minarea}}&maxarea={{$maxarea}}">{{ $local[$t] }}</option>
@@ -96,7 +96,7 @@
                                 </select> 年
                                 <select onChange="MM_o(this)">
                                     @for($i=1;$i<=12;$i++)
-                                        @if($i==$month)
+                                        @if($i == $month)
                                             <option value="estate?select_loccal={{$select_loccal}}&year={{$year}}&month={{$i}}&minunit={{$minunit}}&maxunit={{$maxunit}}&minarea={{$minarea}}&maxarea={{$maxarea}}" selected>{{ $i }}</option>
                                         @else
                                             <option value="estate?select_loccal={{$select_loccal}}&year={{$year}}&month={{$i}}&minunit={{$minunit}}&maxunit={{$maxunit}}&minarea={{$minarea}}&maxarea={{$maxarea}}">{{ $i }}</option>
@@ -108,7 +108,7 @@
                                 單價：
                                 <select onChange="MM_o(this)">
                                     @for($q=1;$q<=50;$q++)
-                                        @if($q==$minunit)
+                                        @if($q == $minunit)
                                             <option value="estate?select_loccal={{$select_loccal}}&year={{$year}}&month={{$month}}&minunit={{$q}}&maxunit={{$maxunit}}&minarea={{$minarea}}&maxarea={{$maxarea}}" selected>{{ $q }}</option>
                                         @else
                                             <option value="estate?select_loccal={{$select_loccal}}&year={{$year}}&month={{$month}}&minunit={{$q}}&maxunit={{$maxunit}}&minarea={{$minarea}}&maxarea={{$maxarea}}">{{ $q }}</option>
@@ -117,7 +117,7 @@
                                 </select>&nbsp;到
                                 <select onChange="MM_o(this)">
                                     @for($k=1;$k<=50;$k++)
-                                        @if($k==$maxunit)
+                                        @if($k == $maxunit)
                                             <option value="estate?select_loccal={{$select_loccal}}&year={{$year}}&month={{$month}}&minunit={{$minunit}}&maxunit={{$k}}&minarea={{$minarea}}&maxarea={{$maxarea}}" selected>{{ $k }}</option>
                                         @else
                                             <option value="estate?select_loccal={{$select_loccal}}&year={{$year}}&month={{$month}}&minunit={{$minunit}}&maxunit={{$k}}&minarea={{$minarea}}&maxarea={{$maxarea}}">{{ $k }}</option>
@@ -129,7 +129,7 @@
                                 總面積：
                                 <select onChange="MM_o(this)">
                                     @for($a=1;$a<=300;$a++)
-                                        @if($a==$minarea)
+                                        @if($a == $minarea)
                                             <option value="estate?select_loccal={{$select_loccal}}&year={{$year}}&month={{$month}}&minunit={{$minunit}}&maxunit={{$maxunit}}&minarea={{$a}}&maxarea={{$maxarea}}" selected>{{ $a }}</option>
                                         @else
                                             <option value="estate?select_loccal={{$select_loccal}}&year={{$year}}&month={{$month}}&minunit={{$minunit}}&maxunit={{$maxunit}}&minarea={{$a}}&maxarea={{$maxarea}}">{{ $a }}</option>
@@ -138,7 +138,7 @@
                                 </select>&nbsp;到
                                 <select onChange="MM_o(this)">
                                     @for($b=1;$b<=300;$b++)
-                                        @if($b==$maxarea)
+                                        @if($b == $maxarea)
                                             <option value="estate?select_loccal={{$select_loccal}}&year={{$year}}&month={{$month}}&minunit={{$minunit}}&maxunit={{$maxunit}}&minarea={{$minarea}}&maxarea={{$b}}" selected>{{ $b }}</option>
                                         @else
                                             <option value="estate?select_loccal={{$select_loccal}}&year={{$year}}&month={{$month}}&minunit={{$minunit}}&maxunit={{$maxunit}}&minarea={{$minarea}}&maxarea={{$b}}">{{ $b }}</option>
@@ -157,7 +157,7 @@
                                     @else
                                         <option value="estate?select_loccal={{$select_loccal}}&year={{$year}}&month={{$month}}&minunit={{$minunit}}&maxunit={{$maxunit}}&minarea={{$minarea}}&maxarea={{$maxarea}}&age={{''}}">全部</option>
                                         @for($y=1;$y<=50;$y++)
-                                            @if($y==$age)
+                                            @if($y == $age)
                                                 <option value="estate?select_loccal={{$select_loccal}}&year={{$year}}&month={{$month}}&minunit={{$minunit}}&maxunit={{$maxunit}}&minarea={{$minarea}}&maxarea={{$maxarea}}&age={{$y}}" selected>{{ $y }}</option>
                                             @else
                                                 <option value="estate?select_loccal={{$select_loccal}}&year={{$year}}&month={{$month}}&minunit={{$minunit}}&maxunit={{$maxunit}}&minarea={{$minarea}}&maxarea={{$maxarea}}&age={{$y}}">{{ $y }}</option>

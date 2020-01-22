@@ -65,7 +65,7 @@
                             @foreach($users as $row)
                                 <tr @if($no%4==1) class="warning" @elseif($no%4==2) class="info" @elseif($no%4==3) class="danger" @else class="sccess" @endif>
                                     <td style="text-align: center;">
-                                        @if((Auth::user()->role == '1admin' && $row->role != '1admin'))
+                                        @if(Auth::user()->role == '1admin' && $row->role != '1admin')
                                             <input type="submit" value="刪除" class="btn btn-danger btn-sm" name='delete[{{ $row->id }}]' onclick="javascript:return del1()">
                                         @endif
                                         @if(Auth::user()->role == '1admin' && $row->role != '1admin')

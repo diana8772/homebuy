@@ -108,16 +108,13 @@ class authorityController extends Controller
         if($request->has('phone')) $phone = $request->input('phone');
         if($request->has('email')) $email = $request->input('email');
         if($request->has('address')) $address = $request->input('address');
-        $status = 0;
         $check = DB::table("person_data")
                    ->where('id',$id)
                    ->get();
         $check = count($check);
         if($request->has('insert')){
             $insert_id = key($request->input('insert'));
-            if($fullname == '' || $date == '' || $sexuality =='' || $phone =='' || $email ==''){
-                $status=203; //有必填欄位未填
-            }else{
+            if($fullname != '' || $date != '' || $sexuality !='' || $phone !='' || $email != ''){
                 if($check == 0){
                     DB::table("person_data")
                       ->insert([
@@ -129,7 +126,6 @@ class authorityController extends Controller
                           'email' => $email,
                           'address' => $address,
                       ]);
-                    $status = 200; //新增成功
                 }else{
                     DB::table("person_data")
                       ->where('id', $insert_id)
@@ -140,7 +136,6 @@ class authorityController extends Controller
                           'phone' => $phone,
                           'address' => $address,
                       ]);
-                    $status = 201; //更新成功
                 }
                 $check = DB::table("person_data")
                            ->where('id',$insert_id)
@@ -175,7 +170,6 @@ class authorityController extends Controller
             compact(
                 'id',
                 'check',
-                'status',
                 'person_data',
                 'person_data1',
             )
