@@ -21,7 +21,6 @@
             }
             function insert1() { 
                 var selectedValues = $('select[id="select_local"]').val() || [];
-                // document.getElementById("myElement").innerHTML = selectedValues;
                 document.getElementById('myElement').value=selectedValues;
                 return true;
             }
@@ -102,7 +101,6 @@
                                 </select>
                                 <input type="submit" value="查詢" class="btn btn-success" name='insert_save' onclick="javascript:return insert1()">
                                 <input type="text" id="myElement" name="select_locals" hidden="">
-                                
                             </td>
                         </tr>
                         <tr>
@@ -149,7 +147,6 @@
                             </td>
                         </tr>
                     </table>
-                    
                     <script type="text/javascript">
                         var ctx = document.getElementById('myChart');
                         var ctx = document.getElementById('myChart').getContext('10d');
@@ -191,7 +188,6 @@
                               data: <?=$number;?>,
                               }]
                             },
-
                             options: {
                                 scales: {
                                     yAxes: [{
@@ -220,50 +216,7 @@
                                 },
                             }
                         });
-
-
                     </script>
-                    @php
-                        // dd(json_encode($number));
-                    @endphp
-                    {{-- <script type="text/javascript">
-                        $.get('get_chart_data',function (data, status) {
-                            var ctx = document.getElementById("my_chart").getContext("2d");
-                                  var my_chart = new Chart(ctx,{
-                                    type: 'pie',
-                                    data: {
-                                        labels: [
-                                          "首页文章列表",
-                                          "分类文章列表",
-                                          "文章详情",
-                                          "关于我",
-                                        ],
-                                        datasets: [{
-                                            data: data,
-                                            backgroundColor: [
-                                                window.chartColors.red,
-                                                window.chartColors.orange,
-                                                window.chartColors.purple,
-                                                window.chartColors.green,
-                                            ],
-                                        }]
-                                    },
-                                    options: {
-                                        responsive: true,
-                                    }
-                              });
-                        });
-                        window.chartColors = {
-                            red: 'rgb(255, 99, 132)',
-                            orange: 'rgb(255, 159, 64)',
-                            yellow: 'rgb(255, 205, 86)',
-                            green: 'rgb(75, 192, 192)',
-                            blue: 'rgb(54, 162, 235)',
-                            purple: 'rgb(153, 102, 255)',
-                            grey: 'rgb(201, 203, 207)'
-                        };
-                    </script> --}}
-
                 </div>
             </div>
         </form>

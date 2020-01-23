@@ -35,7 +35,7 @@ class demographicsController extends Controller
         $month = ($request->has('month')?str_pad($request->input('month'),2,'0',STR_PAD_LEFT):12);
         $select_local = ($request->has('select_locals')?$request->input('select_locals'):'');
         $pieces = explode(",", $select_local);
-        $locals = DB::table("demographics")  //下拉選單
+        $locals = DB::table("demographics")
                     ->groupby('區域別')
                     ->pluck('區域別');
         if($select_local != ''){
