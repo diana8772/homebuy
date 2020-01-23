@@ -174,11 +174,11 @@
 ####   *套用Chart.js來設計圖表
 ####   *利用hoverBackgroundColor、hoverBorderColor設計動態效果，當資料列被碰觸時，會使資料列變色
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/demographics_程式js圖表.png)
-####   *利用options、scales讓y軸與x軸顯示名稱，並且利用下述程式將y軸數值格式化，每3位數加1位逗號
+####   *利用options、scales讓y軸與x軸顯示名稱，並且利用下述程式將y軸數值格式化，每3位數加1位逗號  
 ####    callback: function (value, index, values) {
             return value.toLocaleString();
         }
-![image](https://github.com/diana8772/homebuy/blob/master/public/image/demographics_程式jsx.y軸.png)
+![image](https://github.com/diana8772/homebuy/blob/master/public/image/demographics_程式jsxy軸.png)
 ### 後端
 #### 1.$local為所有地區的名稱，用來當下拉選單  
 ####   *用groupby()將相同的地區名稱用成一群，不取到重覆的值  
