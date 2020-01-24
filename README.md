@@ -136,12 +136,12 @@
   *利用  ->where('單價', '>=', $minunit)及->where('單價', '<=', $maxunit)來做單價區間的篩選  
   *利用  ->where('總面積', '>=', $minarea)及->where('總面積', '>=', $maxarea)來做單價區間的篩選  
   *利用此段程式來判斷$age不為空值時才篩選  
-  <table border=none>
-  	<tr style="background-color: #aaaaaa;"><td>->where(function($query) use ($age){  </td></tr>
-	<tr style="background-color: #aaaaaa;"><td>&nbsp;&nbsp;if(!empty($age)): {  </td></tr>
-	<tr style="background-color: #aaaaaa;"><td>&nbsp;&nbsp;&nbsp;&nbsp;$query->Where('屋齡', $age);  </td></tr>
-	<tr style="background-color: #aaaaaa;"><td>&nbsp;&nbsp;endif;  </td></tr>
-	<tr style="background-color: #aaaaaa;"><td>}) </td></tr>
+  <table style="background-color: #aaaaaa;">
+  	<tr><td>->where(function($query) use ($age){  </td></tr>
+	<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;if(!empty($age)): {  </td></tr>
+	<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$query->Where('屋齡', $age);  </td></tr>
+	<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;endif;  </td></tr>
+	<tr><td>}) </td></tr>
   </table>
   *利用此段程式來判斷$select_loccal不為空值時才篩選  
 		->where(function($query) use ($select_loccal){   
