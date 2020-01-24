@@ -7,18 +7,18 @@
 5.Laravel 6.11.0  
 
 ## 首頁  
-![image](https://github.com/diana8772/homebuy/blob/master/public/image/welcome頁面.png)
+![image](https://github.com/diana8772/homebuy/blob/master/public/image/welcome頁面.png)  
 右上角有Login與Register的功能  
 
 ## Register  
-![image](https://github.com/diana8772/homebuy/blob/master/public/image/register頁面.png)
+![image](https://github.com/diana8772/homebuy/blob/master/public/image/register頁面.png)  
 ### Register - 密碼必須符合條件  
 ### *少於8個字  
 ![image](https://github.com/diana8772/homebuy/blob/master//public/image/register_少於8位數.png)  
 ### *多於20個字  
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/register_多於20位數.png)  
 ### *沒有包含一位以上的數字、大寫英文字、小寫英文字及特殊符號  
-![image](https://github.com/diana8772/homebuy/blob/master/public/image/register_格式不對.png) 
+![image](https://github.com/diana8772/homebuy/blob/master/public/image/register_格式不對.png)  
 ### 程式說明 
 *將密碼設為min:8、max=20,並且要一位以上的數字、大寫英文字、小寫英文字及特殊符號  
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/register_規則.png)  
@@ -39,7 +39,7 @@
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/login_登入次數規則.png)  
 
 ## 登入首頁  
-### *有人口統計資料、房地產資料、個人資料、權限的頁面可以進入
+### *有人口統計資料、房地產資料、個人資料、權限的頁面可以進入  
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/home頁面.png)  
 
 ## 權限  
@@ -102,9 +102,9 @@
 ### *新增時，若有空值，跳出警告。  
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/estate_新增空值.png)  
 ### 程式說明  
-*當還未有input值時，下拉選單必須先給預設值，
+*當還未有input值時，下拉選單必須先給預設值  
 ### 前端  
-#### 1.地區的下拉選單預設值為""，指的是"全部"的意思。並且選單內新增"全部"的選項及所有地區
+#### 1.地區的下拉選單預設值為""，指的是"全部"的意思。並且選單內新增"全部"的選項及所有地區  
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/estate_程式地區下拉.png)  
 #### 2.年份的下拉選單預設值為108  
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/estate_程式年下拉.png)  
@@ -114,7 +114,7 @@
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/estate_程式單價下拉.png)  
 #### 5.總面積以區間來篩選預設為1~300  
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/estate_程式總面積下拉.png)  
-#### 6.屋齡的下拉選單預設值為""，指的是"全部"的意思。並且選單內新增"全部"的選項及所有屋齡
+#### 6.屋齡的下拉選單預設值為""，指的是"全部"的意思。並且選單內新增"全部"的選項及所有屋齡  
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/estate_程式屋齡下拉.png)  
 #### 7.利用onclick="javascript:return insert1()" 來判斷必填欄位是否為空值  
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/estate_程式儲存.png)  
@@ -134,7 +134,7 @@
   *利用  ->where('單價', '>=', $minunit)及->where('單價', '<=', $maxunit)來做單價區間的篩選  
   *利用  ->where('總面積', '>=', $minarea)及->where('總面積', '>=', $maxarea)來做單價區間的篩選  
   *利用此段程式來判斷$age不為空值時才篩選  
-  	->where(function($query) use ($age){   
+  	->where(function($query) use ($age){  
        if(!empty($age)):  
            $query->Where('屋齡', $age);  
        endif;  
@@ -153,55 +153,55 @@
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/demographics複選.png)  
 ### *用滑鼠碰觸資料時，資料的背景色會跟著改變，並且顯示詳細數據  
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/demographics_碰資料.png)  
-### 程式說明
+### 程式說明  
 ### 前端  
 #### 1.年份的下拉選單預設值為108  
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/demographics_程式年份下拉.png)  
-#### 2.月份的下拉選單預設值為12 
-![image](https://github.com/diana8772/homebuy/blob/master/public/image/demographics_程式月份下拉.png) 
-#### 3.地區的下拉選單
-  *預設為""，指的是"全部"的意思
-  *並於選單內新增"全部"的選項及所有地區
-  *可複選，將select設為multiple="multiple"，並利用js讀取所有選取的地區值
-![image](https://github.com/diana8772/homebuy/blob/master/public/image/demographics_程式地區下拉.png) 
-  *按"查詢"後，利用js讀取地區選單，並將數據傳至文字入欄位，方便後端讀取
-![image](https://github.com/diana8772/homebuy/blob/master/public/image/demographics_程式js複選.png) 
+#### 2.月份的下拉選單預設值為12  
+![image](https://github.com/diana8772/homebuy/blob/master/public/image/demographics_程式月份下拉.png)  
+#### 3.地區的下拉選單  
+  *預設為""，指的是"全部"的意思  
+  *並於選單內新增"全部"的選項及所有地區  
+  *可複選，將select設為multiple="multiple"，並利用js讀取所有選取的地區值  
+![image](https://github.com/diana8772/homebuy/blob/master/public/image/demographics_程式地區下拉.png)  
+  *按"查詢"後，利用js讀取地區選單，並將數據傳至文字入欄位，方便後端讀取  
+![image](https://github.com/diana8772/homebuy/blob/master/public/image/demographics_程式js複選.png)  
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/demographics_程式js複選text.png) 
-#### 4.數據圖表
-  *將篩選過後的數據以圖表方式呈現，方便觀看資料
-  *將數值套用number_format()函數，將數值格式化，每3位數加1位逗號
-![image](https://github.com/diana8772/homebuy/blob/master/public/image/demographics_程式公式.png)
-  *套用Chart.js來設計圖表
-  *利用hoverBackgroundColor、hoverBorderColor設計動態效果，當資料列被碰觸時，會使資料列變色
-![image](https://github.com/diana8772/homebuy/blob/master/public/image/demographics_程式js圖表.png)
+#### 4.數據圖表  
+  *將篩選過後的數據以圖表方式呈現，方便觀看資料  
+  *將數值套用number_format()函數，將數值格式化，每3位數加1位逗號  
+![image](https://github.com/diana8772/homebuy/blob/master/public/image/demographics_程式公式.png)  
+  *套用Chart.js來設計圖表  
+  *利用hoverBackgroundColor、hoverBorderColor設計動態效果，當資料列被碰觸時，會使資料列變色  
+![image](https://github.com/diana8772/homebuy/blob/master/public/image/demographics_程式js圖表.png)  
   *利用options、scales讓y軸與x軸顯示名稱，並且利用下述程式將y軸數值格式化，每3位數加1位逗號  
-   callback: function (value, index, values) {
-        return value.toLocaleString();
-    }
-![image](https://github.com/diana8772/homebuy/blob/master/public/image/demographics_程式jsxy軸.png)
-### 後端
+   callback: function (value, index, values) {  
+        return value.toLocaleString();  
+    }  
+![image](https://github.com/diana8772/homebuy/blob/master/public/image/demographics_程式jsxy軸.png)  
+### 後端  
 #### 1.$local為所有地區的名稱，用來當下拉選單  
 ####   *用groupby()將相同的地區名稱用成一群，不取到重覆的值  
 ####   *用pluck()只取值，並將所有的值存成陣列  
-#### 2.$select_local == ""，表示"全選; $select_local != ""，表示有選取其他地區
-  *$request->input('select_locals')為前端所選取的地區值，為字串，必須用$pieces = explode(",", $select_local)來將字串做切割
-  *$data使用的$year、$month為預設值來篩選，並利用whereIn來篩選包含pieces的"區域值"
-  *$charts為圖表需要的數據，使用的$year、$month為預設值來篩選，並利用whereIn來篩選包含pieces的"區域值"，並且只選取總計數與區域值
-  *將charts分別pluck區域別、總計，只讀取value值 例如:
-     區域別 => "中區"
-     區域別 => "北區"
-     區域別 => "北屯區"
-     區域別 => "南區"
-   轉換成
-     "中區", 
-     "北區", 
-     "北屯區", 
-     "南區"
-  *並分別將區域別、總計利用json_encode轉成陣列 例如:
-     0 => "中區",
-     1 => "北區",
-     2 => "北屯區",
-     3 => "南區"
-   轉換成
+#### 2.$select_local == ""，表示"全選; $select_local != ""，表示有選取其他地區  
+  *$request->input('select_locals')為前端所選取的地區值，為字串，必須用$pieces = explode(",", $select_local)來將字串做切割  
+  *$data使用的$year、$month為預設值來篩選，並利用whereIn來篩選包含pieces的"區域值"  
+  *$charts為圖表需要的數據，使用的$year、$month為預設值來篩選，並利用whereIn來篩選包含pieces的"區域值"，並且只選取總計數與區域值  
+  *將charts分別pluck區域別、總計，只讀取value值 例如:  
+     區域別 => "中區"  
+     區域別 => "北區"  
+     區域別 => "北屯區"  
+     區域別 => "南區"  
+   轉換成  
+     "中區",  
+     "北區",  
+     "北屯區",  
+     "南區"  
+  *並分別將區域別、總計利用json_encode轉成陣列 例如:  
+     0 => "中區",  
+     1 => "北區",  
+     2 => "北屯區",  
+     3 => "南區"  
+   轉換成  
      "中區", "北區", "北屯區", "南區"  
-![image](https://github.com/diana8772/homebuy/blob/master/public/image/demographics_程式後端讀取資料.png)
+![image](https://github.com/diana8772/homebuy/blob/master/public/image/demographics_程式後端讀取資料.png)  
