@@ -194,28 +194,28 @@
   *$data使用的$year、$month為預設值來篩選，並利用whereIn來篩選包含pieces的"區域值"  
   *$charts為圖表需要的數據，使用的$year、$month為預設值來篩選，並利用whereIn來篩選包含pieces的"區域值"，並且只選取總計數與區域值  
   *將charts分別pluck區域別、總計，只讀取value值 例如:  
-	```diff
-		# &nbsp;&nbsp;區域別 => "中區",  
+	<div style="background-color: #aaaaaa !important;">
+		&nbsp;&nbsp;區域別 => "中區",  
 		&nbsp;&nbsp;區域別 => "北區",  
 		&nbsp;&nbsp;區域別 => "北屯區",  
 		&nbsp;&nbsp;區域別 => "南區",  
-	```
+	</div>  
    轉換成  
-  	<span style="background-color: #aaaaaa;">
+  	<span style="background-color: #aaaaaa; !important;">
   		&nbsp;&nbsp;"中區",  
 		&nbsp;&nbsp;"北區",  
 		&nbsp;&nbsp;"北屯區",  
 		&nbsp;&nbsp;"南區",  
   	</span>  
   *並分別將區域別、總計利用json_encode轉成陣列 例如:  
-    <span style="background-color: #aaaaaa;">  
+    <span style="background-color: #aaaaaa; !important;">  
     	&nbsp;&nbsp;0 => "中區,  
 		&nbsp;&nbsp;1 => "北區,  
 		&nbsp;&nbsp;2 => "北屯區",  
 		&nbsp;&nbsp;3 => "南區",  
     </span>  
    轉換成   
-   	<span style="background-color: #aaaaaa;">  
+   	<span style="background-color: #aaaaaa; !important;">  
    		"中區", "北區", "北屯區", "南區"  
    	</span>  
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/demographics_程式後端讀取資料.png)  
