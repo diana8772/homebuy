@@ -137,19 +137,19 @@
 &nbsp;&nbsp;&nbsp;&nbsp;*利用  ->where('總面積', '>=', $minarea)及->where('總面積', '>=', $maxarea)來做單價區間的篩選  
 &nbsp;&nbsp;&nbsp;&nbsp;*利用此段程式來判斷$age不為空值時才篩選  
   <span>
-  	->where(function($query) use ($age){  
-	&nbsp;&nbsp;&nbsp;&nbsp;if(!empty($age)): {  
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$query->Where('屋齡', $age);  
-	&nbsp;&nbsp;&nbsp;&nbsp;endif;  
-	}) 
+  	&nbsp;&nbsp;&nbsp;&nbsp;->where(function($query) use ($age){  
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(!empty($age)): {  
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$query->Where('屋齡', $age);  
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endif;  
+	&nbsp;&nbsp;&nbsp;&nbsp;}) 
   </span>
 &nbsp;&nbsp;&nbsp;&nbsp;*利用此段程式來判斷$select_loccal不為空值時才篩選  
   <span>
-  	->where(function($query) use ($select_loccal){  
-	&nbsp;&nbsp;&nbsp;&nbsp;if(!empty($select_loccal)): {  
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$query->Where('地區', $select_loccal);  
-	&nbsp;&nbsp;&nbsp;&nbsp;endif;  
-	}) 
+  	&nbsp;&nbsp;&nbsp;&nbsp;->where(function($query) use ($select_loccal){  
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(!empty($select_loccal)): {  
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$query->Where('地區', $select_loccal);  
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endif;  
+	&nbsp;&nbsp;&nbsp;&nbsp;}) 
   </span>  
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/estate_程式後端房地產.png)  
 ### 資料庫  
@@ -184,9 +184,9 @@
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/demographics_程式js圖表.png)  
 &nbsp;&nbsp;&nbsp;&nbsp;*利用options、scales讓y軸與x軸顯示名稱，並且利用下述程式將y軸數值格式化，每3位數加1位逗號  
 	<span>	
-		callback: function (value, index, values) {  
-		&nbsp;&nbsp;return value.toLocaleString();  
-		}  
+		&nbsp;&nbsp;&nbsp;&nbsp;callback: function (value, index, values) {  
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return value.toLocaleString();  
+		&nbsp;&nbsp;&nbsp;&nbsp;}  
 	</span>
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/demographics_程式jsxy軸.png)  
 ### 後端  
@@ -194,10 +194,10 @@
 ####   *用groupby()將相同的地區名稱用成一群，不取到重覆的值  
 ####   *用pluck()只取值，並將所有的值存成陣列  
 #### 2.$select_local == ""，表示"全選; $select_local != ""，表示有選取其他地區  
-&nbsp;&nbsp;&nbsp;&nbsp;*$request->input('select_locals')為前端所選取的地區值，為字串，必須用$pieces = explode(",", $select_local)來將字串做切割  
-&nbsp;&nbsp;&nbsp;&nbsp;*$data使用的$year、$month為預設值來篩選，並利用whereIn來篩選包含pieces的"區域值"  
-&nbsp;&nbsp;&nbsp;&nbsp;*$charts為圖表需要的數據，使用的$year、$month為預設值來篩選，並利用whereIn來篩選包含pieces的"區域值"，並且只選取總計數與區域值  
-&nbsp;&nbsp;&nbsp;&nbsp;*將charts分別pluck區域別、總計，只讀取value值 例如:  
+&nbsp;&nbsp;&nbsp;&nbsp; *$request->input('select_locals')為前端所選取的地區值，為字串，必須用$pieces = explode(",", $select_local)來將字串做切割  
+&nbsp;&nbsp;&nbsp;&nbsp; *$data使用的$year、$month為預設值來篩選，並利用whereIn來篩選包含pieces的"區域值"  
+&nbsp;&nbsp;&nbsp;&nbsp; *$charts為圖表需要的數據，使用的$year、$month為預設值來篩選，並利用whereIn來篩選包含pieces的"區域值"，並且只選取總計數與區域值  
+&nbsp;&nbsp;&nbsp;&nbsp; *將charts分別pluck區域別、總計，只讀取value值 例如:  
 	<span>  
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;區域別 => "中區",  
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;區域別 => "北區",  
