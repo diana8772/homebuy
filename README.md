@@ -201,21 +201,21 @@
 		&nbsp;&nbsp;區域別 => "南區",  
 	</div>  
    轉換成  
-  	<span style="background-color: #aaaaaa; !important;">
+  	<span style="background-color: #aaaaaa !important;">
   		&nbsp;&nbsp;"中區",  
 		&nbsp;&nbsp;"北區",  
 		&nbsp;&nbsp;"北屯區",  
 		&nbsp;&nbsp;"南區",  
   	</span>  
   *並分別將區域別、總計利用json_encode轉成陣列 例如:  
-    <span style="background-color: #aaaaaa; !important;">  
+    <span style="background-color: #aaaaaa !important;">  
     	&nbsp;&nbsp;0 => "中區,  
 		&nbsp;&nbsp;1 => "北區,  
 		&nbsp;&nbsp;2 => "北屯區",  
 		&nbsp;&nbsp;3 => "南區",  
     </span>  
    轉換成   
-   	<span style="background-color: #aaaaaa; !important;">  
+   	<span style="background-color: #aaaaaa !important;">  
    		"中區", "北區", "北屯區", "南區"  
    	</span>  
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/demographics_程式後端讀取資料.png)  
