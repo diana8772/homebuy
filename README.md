@@ -136,21 +136,21 @@
   *利用  ->where('單價', '>=', $minunit)及->where('單價', '<=', $maxunit)來做單價區間的篩選  
   *利用  ->where('總面積', '>=', $minarea)及->where('總面積', '>=', $maxarea)來做單價區間的篩選  
   *利用此段程式來判斷$age不為空值時才篩選  
-  <table>
-  	<tr><td>->where(function($query) use ($age){  </td></tr>
-	<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;if(!empty($age)): {  </td></tr>
-	<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$query->Where('屋齡', $age);  </td></tr>
-	<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;endif;  </td></tr>
-	<tr><td>}) </td></tr>
-  </table>
+  <span>
+  	->where(function($query) use ($age){  
+	&nbsp;&nbsp;&nbsp;&nbsp;if(!empty($age)): {  
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$query->Where('屋齡', $age);  
+	&nbsp;&nbsp;&nbsp;&nbsp;endif;  
+	}) 
+  </span>
   *利用此段程式來判斷$select_loccal不為空值時才篩選  
-  <table>
-  	<tr><td>->where(function($query) use ($select_loccal){  </td></tr>
-	<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;if(!empty($select_loccal)): {  </td></tr>
-	<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$query->Where('地區', $select_loccal);  </td></tr>
-	<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;endif;  </td></tr>
-	<tr><td>}) </td></tr>
-  </table>  
+  <span>
+  	->where(function($query) use ($select_loccal){  
+	&nbsp;&nbsp;&nbsp;&nbsp;if(!empty($select_loccal)): {  
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$query->Where('地區', $select_loccal);  
+	&nbsp;&nbsp;&nbsp;&nbsp;endif;  
+	}) 
+  </span>  
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/estate_程式後端房地產.png)  
 
 ## 人口統計資料  
@@ -181,9 +181,11 @@
   *利用hoverBackgroundColor、hoverBorderColor設計動態效果，當資料列被碰觸時，會使資料列變色  
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/demographics_程式js圖表.png)  
   *利用options、scales讓y軸與x軸顯示名稱，並且利用下述程式將y軸數值格式化，每3位數加1位逗號  
+	<span>	
 		callback: function (value, index, values) {  
-			return value.toLocaleString();  
+		&nbsp;&nbsp;return value.toLocaleString();  
 		}  
+	</span>
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/demographics_程式jsxy軸.png)  
 ### 後端  
 #### 1.$local為所有地區的名稱，用來當下拉選單  
@@ -194,28 +196,28 @@
   *$data使用的$year、$month為預設值來篩選，並利用whereIn來篩選包含pieces的"區域值"  
   *$charts為圖表需要的數據，使用的$year、$month為預設值來篩選，並利用whereIn來篩選包含pieces的"區域值"，並且只選取總計數與區域值  
   *將charts分別pluck區域別、總計，只讀取value值 例如:  
-	<div style="background-color: #aaaaaa !important;">
+	<span>
 		&nbsp;&nbsp;區域別 => "中區",  
 		&nbsp;&nbsp;區域別 => "北區",  
 		&nbsp;&nbsp;區域別 => "北屯區",  
 		&nbsp;&nbsp;區域別 => "南區",  
-	</div>  
-   轉換成  
-  	<span style="background-color: #aaaaaa !important;">
+	</span>  
+   轉換成   
+  	<span>
   		&nbsp;&nbsp;"中區",  
 		&nbsp;&nbsp;"北區",  
 		&nbsp;&nbsp;"北屯區",  
 		&nbsp;&nbsp;"南區",  
   	</span>  
   *並分別將區域別、總計利用json_encode轉成陣列 例如:  
-    <span style="background-color: #aaaaaa !important;">  
+    <span>  
     	&nbsp;&nbsp;0 => "中區,  
 		&nbsp;&nbsp;1 => "北區,  
 		&nbsp;&nbsp;2 => "北屯區",  
 		&nbsp;&nbsp;3 => "南區",  
     </span>  
    轉換成   
-   	<span style="background-color: #aaaaaa !important;">  
-   		"中區", "北區", "北屯區", "南區"  
+   	<span>  
+   	&nbsp;&nbsp;"中區", "北區", "北屯區", "南區"  
    	</span>  
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/demographics_程式後端讀取資料.png)  
