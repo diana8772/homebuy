@@ -195,10 +195,10 @@
   *$charts為圖表需要的數據，使用的$year、$month為預設值來篩選，並利用whereIn來篩選包含pieces的"區域值"，並且只選取總計數與區域值  
   *將charts分別pluck區域別、總計，只讀取value值 例如:  
 	```diff
-		# &nbsp;&nbsp;區域別 => "中區",  
-		# &nbsp;&nbsp;區域別 => "北區",  
-		# &nbsp;&nbsp;區域別 => "北屯區",  
-		# &nbsp;&nbsp;區域別 => "南區",  
+		# &nbsp;&nbsp;區域別 => "中區",<br>  
+		# &nbsp;&nbsp;區域別 => "北區",<br>  
+		# &nbsp;&nbsp;區域別 => "北屯區",<br>  
+		# &nbsp;&nbsp;區域別 => "南區",<br>  
 	```
    轉換成  
   	<span style="background-color: #aaaaaa;">
