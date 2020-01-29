@@ -131,46 +131,46 @@
 #### 2.$local為所有地區的名稱，用來當下拉選單  
 &emsp;&emsp;*用groupby()將相同的地區名稱用成一群，不取到重覆的值  
 	<span>  
-		&emsp;&emsp;0 => {#292 ▼  
-		&emsp;&emsp;&emsp;+"地區": "中區"  
-		&emsp;&emsp;}  
-		&emsp;&emsp;1 => {#287 ▼  
-		&emsp;&emsp;&emsp;+"地區": "中區"  
-		&emsp;&emsp;}  
-		&emsp;&emsp;2 => {#281 ▼  
-		&emsp;&emsp;&emsp;+"地區": "中區"  
-		&emsp;&emsp;}  
-		&emsp;&emsp;3 => {#294 ▼  
-		&emsp;&emsp;&emsp;+"地區": "中區"  
-		&emsp;&emsp;}  
-		&emsp;&emsp;4 => {#295 ▼  
-		&emsp;&emsp;&emsp;+"地區": "中區"  
-		&emsp;&emsp;}  
-		&emsp;&emsp;5 => {#296 ▼  
-		&emsp;&emsp;&emsp;+"地區": "中區"  
-		&emsp;&emsp;}  
+		&emsp;&emsp;&emsp;0 => {#292 ▼  
+		&emsp;&emsp;&emsp;&emsp;+"地區": "中區"  
+		&emsp;&emsp;&emsp;}  
+		&emsp;&emsp;&emsp;1 => {#287 ▼  
+		&emsp;&emsp;&emsp;&emsp;+"地區": "中區"  
+		&emsp;&emsp;&emsp;}  
+		&emsp;&emsp;&emsp;2 => {#281 ▼  
+		&emsp;&emsp;&emsp;&emsp;+"地區": "中區"  
+		&emsp;&emsp;&emsp;}  
+		&emsp;&emsp;&emsp;3 => {#294 ▼  
+		&emsp;&emsp;&emsp;&emsp;+"地區": "中區"  
+		&emsp;&emsp;&emsp;}  
+		&emsp;&emsp;&emsp;4 => {#295 ▼  
+		&emsp;&emsp;&emsp;&emsp;+"地區": "中區"  
+		&emsp;&emsp;&emsp;}  
+		&emsp;&emsp;&emsp;5 => {#296 ▼  
+		&emsp;&emsp;&emsp;&emsp;+"地區": "中區"  
+		&emsp;&emsp;&emsp;}  
 	</span>  
 	&emsp;&emsp;轉換成  
 	<span>  
-		&emsp;&emsp;0 => {#289 ▼  
-	    &emsp;&emsp;&emsp;+"地區": "中區"  
-	    &emsp;&emsp;}  
-	    &emsp;&emsp;1 => {#287 ▼  
-	    &emsp;&emsp;&emsp;+"地區": "北屯區"  
-	    &emsp;&emsp;}  
-	    &emsp;&emsp;2 => {#281 ▼  
-	    &emsp;&emsp;&emsp;+"地區": "北區"  
-	    &emsp;&emsp;}  
-	    &emsp;&emsp;3 => {#294 ▼  
-	    &emsp;&emsp;&emsp;+"地區": "西屯區"  
-	    &emsp;&emsp;}  
+		&emsp;&emsp;&emsp;0 => {#289 ▼  
+	    &emsp;&emsp;&emsp;&emsp;+"地區": "中區"  
+	    &emsp;&emsp;&emsp;}  
+	    &emsp;&emsp;&emsp;1 => {#287 ▼  
+	    &emsp;&emsp;&emsp;&emsp;+"地區": "北屯區"  
+	    &emsp;&emsp;&emsp;}  
+	    &emsp;&emsp;&emsp;2 => {#281 ▼  
+	    &emsp;&emsp;&emsp;&emsp;+"地區": "北區"  
+	    &emsp;&emsp;&emsp;}  
+	    &emsp;&emsp;&emsp;3 => {#294 ▼  
+	    &emsp;&emsp;&emsp;&emsp;+"地區": "西屯區"  
+	    &emsp;&emsp;&emsp;}  
 	</span>  
 &emsp;&emsp;*用pluck()只取值，並將所有的值存成陣列    
 	<span>  
-		&emsp;&emsp;0 => "中區"  
-    	&emsp;&emsp;1 => "北屯區"  
-    	&emsp;&emsp;2 => "北區"  
-    	&emsp;&emsp;3 => "西屯區"  
+		&emsp;&emsp;&emsp;0 => "中區"  
+    	&emsp;&emsp;&emsp;1 => "北屯區"  
+    	&emsp;&emsp;&emsp;2 => "北區"  
+    	&emsp;&emsp;&emsp;3 => "西屯區"  
 	</span>  
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/estate_程式後端地區.png)  
 #### 3.$estate為房地產資料  
@@ -252,7 +252,7 @@
 		&emsp;&emsp;&emsp;"北屯區",  
 		&emsp;&emsp;&emsp;"南區",  
   	</span>  
-&emsp;&emsp;*並分別將區域別、總計利用json_encode轉成陣列 例如:  
+&emsp;&emsp; *並分別將區域別、總計利用json_encode轉成陣列 例如:  
     <span>  
     	&emsp;&emsp;&emsp;0 => "中區,  
 		&emsp;&emsp;&emsp;1 => "北區,  
