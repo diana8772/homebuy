@@ -90,8 +90,8 @@
 1.$request->has('id') 判斷是否有id值從前端傳來、$request->input('id')取得id值  
 2.利用key()來讀取在前端儲存按鈕內隱藏的id值  
 3.用$ckeck來確認該使用者的資料是否已經存在，並且再次判斷必填欄位是否被填寫  
-&nbsp;&nbsp;&nbsp;&nbsp;*count($ckeck)==0 表示該使用者的資料還未存在，若必填欄位都填寫了，則person_data會新增一筆使用者資料  
-&nbsp;&nbsp;&nbsp;&nbsp;*count($ckeck)!=0 表示該使用者的資料已存在，若必填欄位都填寫了，則person_data會更新使用者資料  
+&emsp;&emsp;*count($ckeck)==0 表示該使用者的資料還未存在，若必填欄位都填寫了，則person_data會新增一筆使用者資料  
+&emsp;&emsp;*count($ckeck)!=0 表示該使用者的資料已存在，若必填欄位都填寫了，則person_data會更新使用者資料  
 4.新增或更新完後，再將$ckeck更新一次  
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/person_新增程式.png)  
 ### 資料庫  
@@ -125,31 +125,72 @@
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/estate_程式js儲存.png)  
 ### 後端  
 #### 1.新增  
-&nbsp;&nbsp;&nbsp;&nbsp;*利用$request->input('insert_local')來得取輸入的欄位值  
-&nbsp;&nbsp;&nbsp;&nbsp;*$id = DB::table("estate")->select('id')->max('id')+1; 找到目前最大的id，並且+1，當作這次新增時用的id值  
+&emsp;&emsp;*利用$request->input('insert_local')來得取輸入的欄位值  
+&emsp;&emsp;*$id = DB::table("estate")->select('id')->max('id')+1; 找到目前最大的id，並且+1，當作這次新增時用的id值  
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/estate_程式後端儲存.png)  
 #### 2.$local為所有地區的名稱，用來當下拉選單  
-&nbsp;&nbsp;&nbsp;&nbsp;*用groupby()將相同的地區名稱用成一群，不取到重覆的值  
-&nbsp;&nbsp;&nbsp;&nbsp;*用pluck()只取值，並將所有的值存成陣列  
+&emsp;&emsp;*用groupby()將相同的地區名稱用成一群，不取到重覆的值  
+	<span>  
+		&emsp;&emsp;0 => {#292 ▼  
+		&emsp;&emsp;&emsp;+"地區": "中區"  
+		&emsp;&emsp;}  
+		&emsp;&emsp;1 => {#287 ▼  
+		&emsp;&emsp;&emsp;+"地區": "中區"  
+		&emsp;&emsp;}  
+		&emsp;&emsp;2 => {#281 ▼  
+		&emsp;&emsp;&emsp;+"地區": "中區"  
+		&emsp;&emsp;}  
+		&emsp;&emsp;3 => {#294 ▼  
+		&emsp;&emsp;&emsp;+"地區": "中區"  
+		&emsp;&emsp;}  
+		&emsp;&emsp;4 => {#295 ▼  
+		&emsp;&emsp;&emsp;+"地區": "中區"  
+		&emsp;&emsp;}  
+		&emsp;&emsp;5 => {#296 ▼  
+		&emsp;&emsp;&emsp;+"地區": "中區"  
+		&emsp;&emsp;}  
+	</span>  
+	&emsp;&emsp;轉換成  
+	<span>  
+		&emsp;&emsp;0 => {#289 ▼  
+	    &emsp;&emsp;&emsp;+"地區": "中區"  
+	    &emsp;&emsp;}  
+	    &emsp;&emsp;1 => {#287 ▼  
+	    &emsp;&emsp;&emsp;+"地區": "北屯區"  
+	    &emsp;&emsp;}  
+	    &emsp;&emsp;2 => {#281 ▼  
+	    &emsp;&emsp;&emsp;+"地區": "北區"  
+	    &emsp;&emsp;}  
+	    &emsp;&emsp;3 => {#294 ▼  
+	    &emsp;&emsp;&emsp;+"地區": "西屯區"  
+	    &emsp;&emsp;}  
+	</span>  
+&emsp;&emsp;*用pluck()只取值，並將所有的值存成陣列    
+	<span>  
+		&emsp;&emsp;0 => "中區"  
+    	&emsp;&emsp;1 => "北屯區"  
+    	&emsp;&emsp;2 => "北區"  
+    	&emsp;&emsp;3 => "西屯區"  
+	</span>  
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/estate_程式後端地區.png)  
 #### 3.$estate為房地產資料  
-&nbsp;&nbsp;&nbsp;&nbsp;*利用  ->where('單價', '>=', $minunit)及->where('單價', '<=', $maxunit)來做單價區間的篩選  
-&nbsp;&nbsp;&nbsp;&nbsp;*利用  ->where('總面積', '>=', $minarea)及->where('總面積', '>=', $maxarea)來做單價區間的篩選  
-&nbsp;&nbsp;&nbsp;&nbsp;*利用此段程式來判斷$age不為空值時才篩選  
+&emsp;&emsp;*利用  ->where('單價', '>=', $minunit)及->where('單價', '<=', $maxunit)來做單價區間的篩選  
+&emsp;&emsp;*利用  ->where('總面積', '>=', $minarea)及->where('總面積', '>=', $maxarea)來做單價區間的篩選  
+&emsp;&emsp;*利用此段程式來判斷$age不為空值時才篩選  
   <span>
-  	&nbsp;&nbsp;&nbsp;&nbsp;->where(function($query) use ($age){  
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(!empty($age)): {  
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$query->Where('屋齡', $age);  
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endif;  
-	&nbsp;&nbsp;&nbsp;&nbsp;}) 
+  	&emsp;&emsp;->where(function($query) use ($age){  
+	&emsp;&emsp;&emsp;&emsp;if(!empty($age)): {  
+	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;$query->Where('屋齡', $age);  
+	&emsp;&emsp;&emsp;&emsp;endif;  
+	&emsp;&emsp;}) 
   </span>
-&nbsp;&nbsp;&nbsp;&nbsp;*利用此段程式來判斷$select_loccal不為空值時才篩選  
+&emsp;&emsp;*利用此段程式來判斷$select_loccal不為空值時才篩選  
   <span>
-  	&nbsp;&nbsp;&nbsp;&nbsp;->where(function($query) use ($select_loccal){  
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(!empty($select_loccal)): {  
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$query->Where('地區', $select_loccal);  
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endif;  
-	&nbsp;&nbsp;&nbsp;&nbsp;}) 
+  	&emsp;&emsp;->where(function($query) use ($select_loccal){  
+	&emsp;&emsp;&emsp;&emsp;if(!empty($select_loccal)): {  
+	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;$query->Where('地區', $select_loccal);  
+	&emsp;&emsp;&emsp;&emsp;endif;  
+	&emsp;&emsp;}) 
   </span>  
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/estate_程式後端房地產.png)  
 ### 資料庫  
@@ -168,25 +209,25 @@
 #### 2.月份的下拉選單預設值為12  
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/demographics_程式月份下拉.png)  
 #### 3.地區的下拉選單  
-&nbsp;&nbsp;&nbsp;&nbsp;*預設為""，指的是"全部"的意思  
-&nbsp;&nbsp;&nbsp;&nbsp;*並於選單內新增"全部"的選項及所有地區  
-&nbsp;&nbsp;&nbsp;&nbsp;*可複選，將select設為multiple="multiple"，並利用js讀取所有選取的地區值  
+&emsp;&emsp;*預設為""，指的是"全部"的意思  
+&emsp;&emsp;*並於選單內新增"全部"的選項及所有地區  
+&emsp;&emsp;*可複選，將select設為multiple="multiple"，並利用js讀取所有選取的地區值  
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/demographics_程式地區下拉.png)  
-&nbsp;&nbsp;&nbsp;&nbsp;*按"查詢"後，利用js讀取地區選單，並將數據傳至文字入欄位，方便後端讀取  
+&emsp;&emsp;*按"查詢"後，利用js讀取地區選單，並將數據傳至文字入欄位，方便後端讀取  
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/demographics_程式js複選.png)  
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/demographics_程式js複選text.png) 
 #### 4.數據圖表  
-&nbsp;&nbsp;&nbsp;&nbsp;*將篩選過後的數據以圖表方式呈現，方便觀看資料  
-&nbsp;&nbsp;&nbsp;&nbsp;*將數值套用number_format()函數，將數值格式化，每3位數加1位逗號  
+&emsp;&emsp;*將篩選過後的數據以圖表方式呈現，方便觀看資料  
+&emsp;&emsp;*將數值套用number_format()函數，將數值格式化，每3位數加1位逗號  
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/demographics_程式公式.png)  
-&nbsp;&nbsp;&nbsp;&nbsp;*套用Chart.js來設計圖表  
-&nbsp;&nbsp;&nbsp;&nbsp;*利用hoverBackgroundColor、hoverBorderColor設計動態效果，當資料列被碰觸時，會使資料列變色  
+&emsp;&emsp;*套用Chart.js來設計圖表  
+&emsp;&emsp;*利用hoverBackgroundColor、hoverBorderColor設計動態效果，當資料列被碰觸時，會使資料列變色  
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/demographics_程式js圖表.png)  
-&nbsp;&nbsp;&nbsp;&nbsp;*利用options、scales讓y軸與x軸顯示名稱，並且利用下述程式將y軸數值格式化，每3位數加1位逗號  
+&emsp;&emsp;*利用options、scales讓y軸與x軸顯示名稱，並且利用下述程式將y軸數值格式化，每3位數加1位逗號  
 	<span>	
-		&nbsp;&nbsp;&nbsp;&nbsp;callback: function (value, index, values) {  
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return value.toLocaleString();  
-		&nbsp;&nbsp;&nbsp;&nbsp;}  
+		&emsp;&emsp;callback: function (value, index, values) {  
+		&emsp;&emsp;&emsp;return value.toLocaleString();  
+		&emsp;&emsp;}  
 	</span>
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/demographics_程式jsxy軸.png)  
 ### 後端  
@@ -194,33 +235,33 @@
 ####   *用groupby()將相同的地區名稱用成一群，不取到重覆的值  
 ####   *用pluck()只取值，並將所有的值存成陣列  
 #### 2.$select_local == ""，表示"全選; $select_local != ""，表示有選取其他地區  
-&nbsp;&nbsp;&nbsp;&nbsp; *$request->input('select_locals')為前端所選取的地區值，為字串，必須用$pieces = explode(",", $select_local)來將字串做切割  
-&nbsp;&nbsp;&nbsp;&nbsp; *$data使用的$year、$month為預設值來篩選，並利用whereIn來篩選包含pieces的"區域值"  
-&nbsp;&nbsp;&nbsp;&nbsp; *$charts為圖表需要的數據，使用的$year、$month為預設值來篩選，並利用whereIn來篩選包含pieces的"區域值"，並且只選取總計數與區域值  
-&nbsp;&nbsp;&nbsp;&nbsp; *將charts分別pluck區域別、總計，只讀取value值 例如:  
+&emsp;&emsp; *$request->input('select_locals')為前端所選取的地區值，為字串，必須用$pieces = explode(",", $select_local)來將字串做切割  
+&emsp;&emsp; *$data使用的$year、$month為預設值來篩選，並利用whereIn來篩選包含pieces的"區域值"  
+&emsp;&emsp; *$charts為圖表需要的數據，使用的$year、$month為預設值來篩選，並利用whereIn來篩選包含pieces的"區域值"，並且只選取總計數與區域值  
+&emsp;&emsp; *將charts分別pluck區域別、總計，只讀取value值 例如:  
 	<span>  
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;區域別 => "中區",  
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;區域別 => "北區",  
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;區域別 => "北屯區",  
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;區域別 => "南區",  
+		&emsp;&emsp;&emsp;區域別 => "中區",  
+		&emsp;&emsp;&emsp;區域別 => "北區",  
+		&emsp;&emsp;&emsp;區域別 => "北屯區",  
+		&emsp;&emsp;&emsp;區域別 => "南區",  
 	</span>  
    轉換成   
   	<span>  
-  		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"中區",  
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"北區",  
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"北屯區",  
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"南區",  
+  		&emsp;&emsp;&emsp;"中區",  
+		&emsp;&emsp;&emsp;"北區",  
+		&emsp;&emsp;&emsp;"北屯區",  
+		&emsp;&emsp;&emsp;"南區",  
   	</span>  
-&nbsp;&nbsp;&nbsp;&nbsp;*並分別將區域別、總計利用json_encode轉成陣列 例如:  
+&emsp;&emsp;*並分別將區域別、總計利用json_encode轉成陣列 例如:  
     <span>  
-    	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0 => "中區,  
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 => "北區,  
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2 => "北屯區",  
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3 => "南區",  
+    	&emsp;&emsp;&emsp;0 => "中區,  
+		&emsp;&emsp;&emsp;1 => "北區,  
+		&emsp;&emsp;&emsp;2 => "北屯區",  
+		&emsp;&emsp;&emsp;3 => "南區",  
     </span>  
-   &nbsp;&nbsp;&nbsp;&nbsp;轉換成   
+   &emsp;&emsp;轉換成   
    	<span>  
-   	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"中區", "北區", "北屯區", "南區"  
+   	&emsp;&emsp;&emsp;"中區", "北區", "北屯區", "南區"  
    	</span>  
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/demographics_程式後端讀取資料.png)  
 ### 資料庫  

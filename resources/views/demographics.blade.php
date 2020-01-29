@@ -75,7 +75,7 @@
                                             <option value="demographics?year={{$j}}&month={{$month}}">{{ $j }}</option>
                                         @endif
                                     @endfor
-                                </select> 年
+                                </select> 年 
                                 <select onChange="MM_o(this)">
                                     @for($i=1;$i<=12;$i++)
                                         @if($i==$month)

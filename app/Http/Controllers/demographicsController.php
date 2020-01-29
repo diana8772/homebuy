@@ -57,7 +57,6 @@ class demographicsController extends Controller
                         ->where('date', $year.$month)
                         ->get();
         }
-        
         $local = $charts->pluck('區域別');
         $number = $charts->pluck('總計');
         $local = json_encode($local);
