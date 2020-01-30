@@ -125,11 +125,11 @@
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/estate_程式js儲存.png)  
 ### 後端(app\Http\Controllers\estateController.php)：  
 #### 1.新增  
-&emsp;&emsp;*利用$request->input('insert_local')來得取輸入的欄位值  
-&emsp;&emsp;*$id = DB::table("estate")->select('id')->max('id')+1; 找到目前最大的id，並且+1，當作這次新增時用的id值  
+&emsp;&emsp; *利用$request->input('insert_local')來得取輸入的欄位值  
+&emsp;&emsp; *$id = DB::table("estate")->select('id')->max('id')+1; 找到目前最大的id，並且+1，當作這次新增時用的id值  
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/estate_程式後端儲存.png)  
 #### 2.$local為所有地區的名稱，用來當下拉選單  
-&emsp;&emsp;*用groupby()將相同的地區名稱用成一群，不取到重覆的值  
+&emsp;&emsp; *用groupby()將相同的地區名稱用成一群，不取到重覆的值  
 	<span>  
 		&emsp;&emsp;&emsp;0 => {#292 ▼  
 		&emsp;&emsp;&emsp;&emsp;+"地區": "中區"  
@@ -148,7 +148,7 @@
 		&emsp;&emsp;&emsp;}  
 		&emsp;&emsp;&emsp;5 => {#296 ▼  
 		&emsp;&emsp;&emsp;&emsp;+"地區": "中區"  
-		&emsp;&emsp;&emsp;}  
+		&emsp;&emsp;&emsp;}...  
 	</span>  
 	&emsp;&emsp;轉換成  
 	<span>  
@@ -165,7 +165,7 @@
 	    &emsp;&emsp;&emsp;&emsp;+"地區": "西屯區"  
 	    &emsp;&emsp;&emsp;}  
 	</span>  
-&emsp;&emsp;*用pluck()只取值，並將所有的值存成陣列    
+&emsp;&emsp; *用pluck()只取值，並將所有的值存成陣列    
 	<span>  
 		&emsp;&emsp;&emsp;0 => "中區"  
     	&emsp;&emsp;&emsp;1 => "北屯區"  
@@ -174,23 +174,23 @@
 	</span>  
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/estate_程式後端地區.png)  
 #### 3.$estate為房地產資料  
-&emsp;&emsp;*利用  ->where('單價', '>=', $minunit)及->where('單價', '<=', $maxunit)來做單價區間的篩選  
-&emsp;&emsp;*利用  ->where('總面積', '>=', $minarea)及->where('總面積', '>=', $maxarea)來做單價區間的篩選  
-&emsp;&emsp;*利用此段程式來判斷$age不為空值時才篩選  
+&emsp;&emsp; *利用  ->where('單價', '>=', $minunit)及->where('單價', '<=', $maxunit)來做單價區間的篩選  
+&emsp;&emsp; *利用  ->where('總面積', '>=', $minarea)及->where('總面積', '>=', $maxarea)來做單價區間的篩選  
+&emsp;&emsp; *利用此段程式來判斷$age不為空值時才篩選  
   <span>
   	&emsp;&emsp;->where(function($query) use ($age){  
 	&emsp;&emsp;&emsp;&emsp;if(!empty($age)): {  
 	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;$query->Where('屋齡', $age);  
 	&emsp;&emsp;&emsp;&emsp;endif;  
-	&emsp;&emsp;}) 
-  </span>
-&emsp;&emsp;*利用此段程式來判斷$select_loccal不為空值時才篩選  
-  <span>
-  	&emsp;&emsp;->where(function($query) use ($select_loccal){  
-	&emsp;&emsp;&emsp;&emsp;if(!empty($select_loccal)): {  
-	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;$query->Where('地區', $select_loccal);  
-	&emsp;&emsp;&emsp;&emsp;endif;  
-	&emsp;&emsp;}) 
+	&emsp;&emsp;})  
+  </span>  
+&emsp;&emsp; *利用此段程式來判斷$select_loccal不為空值時才篩選  
+  <span>  
+  	&emsp;&emsp; ->where(function($query) use ($select_loccal){  
+	&emsp;&emsp;&emsp;&emsp; if(!empty($select_loccal)): {  
+	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; $query->Where('地區', $select_loccal);  
+	&emsp;&emsp;&emsp;&emsp; endif;  
+	&emsp;&emsp; })  
   </span>  
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/estate_程式後端房地產.png)  
 ### 資料庫  
@@ -226,9 +226,9 @@
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/demographics_程式js圖表.png)  
 &emsp;&emsp;*利用options、scales讓y軸與x軸顯示名稱，並且利用下述程式將y軸數值格式化，每3位數加1位逗號  
 	<span>	
-		&emsp;&emsp;callback: function (value, index, values) {  
-		&emsp;&emsp;&emsp;return value.toLocaleString();  
-		&emsp;&emsp;}  
+		&emsp;&emsp; callback: function (value, index, values) {  
+		&emsp;&emsp;&emsp; return value.toLocaleString();  
+		&emsp;&emsp; }  
 	</span>
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/demographics_程式jsxy軸.png)  
 ### 後端(app\Http\Controllers\demographicsController.php)：  
