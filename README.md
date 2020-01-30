@@ -8,14 +8,14 @@
 
 ## 首頁  
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/welcome頁面.png)  
-右上角有Login與Register的功能  
+*右上角有Login與Register的功能  
 
 ## Register  
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/register頁面.png)  
 ### Register - 密碼必須符合條件  
-### *少於8個字  
+### *最少8位數  
 ![image](https://github.com/diana8772/homebuy/blob/master//public/image/register_少於8位數.png)  
-### *多於20個字  
+### *最多20位數  
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/register_多於20位數.png)  
 ### *沒有包含一位以上的數字、大寫英文字、小寫英文字及特殊符號  
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/register_格式不對.png)  
@@ -61,10 +61,10 @@
 #### *在資料庫裡，我將權限admin改為1admin、user改為2user、guest改為3guest(比較好排序)  
 #### *user、guest剛註冊時，權限等於"",admin透過編輯權限來修改  
 #### *Auth::user()->role(前端)、auth()->user()->role(後端)可以得知目前登入帳號的權限  
-#### *後端：  
-  1.判斷目前權限，利用where、orwhere來篩選，並且取得資料  
+#### *後端(app\Http\Controllers\authorityController.php)：  
+  1.判斷目前權限，利用where、orwhere來篩選，並利用orderBy()來排序資料  
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/authority_權限程式contoller.png)  
-#### *前端：  
+#### *前端(resources\views\authority.blade.php)：  
   1.利用foreach顯示資料  
   2.Auth::user()->role == '1admin' && $row->role != '1admin' 如果目前是1admin 並且該列資料不是自己的才能顯示刪除、編輯按鈕(因為將1admin刪掉或修改權限就沒人管控)  
   3.@if(isset($edit) && $edit == $row->id) 編輯被按下，並且得知是哪列被編輯，該列按鈕改為儲存  
@@ -80,13 +80,13 @@
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/person_儲存空值.png)  
 ### 程式說明  
 #### 剛註冊時，只有建users的表格，登入後須至個人資訊頁裡修改資料，修改後資料庫person_data才會新增使用者資料  
-### 前端  
+#### 前端(resources\views\person.blade.php)：  
 1.利用onclick="javascript:return insert1()" 來判斷必填欄位是否為空值  
 2.利用document.getElementById("fullname")、 var fullname1 = fullname.value;來取值...  
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/person_儲存程式.png)  
 3.若有任一個欄位未填寫，跳出提示訊息，並且不跳頁傳值  
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/person_js程式.png)  
-### 後端  
+#### 後端(app\Http\Controllers\authorityController.php)：  
 1.$request->has('id') 判斷是否有id值從前端傳來、$request->input('id')取得id值  
 2.利用key()來讀取在前端儲存按鈕內隱藏的id值  
 3.用$ckeck來確認該使用者的資料是否已經存在，並且再次判斷必填欄位是否被填寫  
@@ -105,7 +105,7 @@
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/estate_新增空值.png)  
 ### 程式說明  
 *當還未有input值時，下拉選單必須先給預設值  
-### 前端  
+### 前端(resources\views\estate.blade.php)：  
 #### 1.地區的下拉選單預設值為""，指的是"全部"的意思。並且選單內新增"全部"的選項及所有地區  
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/estate_程式地區下拉.png)  
 #### 2.年份的下拉選單預設值為108  
@@ -123,7 +123,7 @@
 #### 8.利用document.getElementById("insert_local")、 var insert_local1 = insert_local.value;來取值...  
 #### 9.若有任一個欄位未填寫，跳出提示訊息，並且不跳頁傳值  
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/estate_程式js儲存.png)  
-### 後端  
+### 後端(app\Http\Controllers\estateController.php)：  
 #### 1.新增  
 &emsp;&emsp;*利用$request->input('insert_local')來得取輸入的欄位值  
 &emsp;&emsp;*$id = DB::table("estate")->select('id')->max('id')+1; 找到目前最大的id，並且+1，當作這次新增時用的id值  
@@ -194,6 +194,7 @@
   </span>  
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/estate_程式後端房地產.png)  
 ### 資料庫  
+*參考資料：https://lvr.land.moi.gov.tw/login.action  
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/資料庫estate.png)  
 
 ## 人口統計資料  
@@ -203,7 +204,7 @@
 ### *用滑鼠碰觸資料時，資料的背景色會跟著改變，並且顯示詳細數據  
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/demographics_碰資料.png)  
 ### 程式說明  
-### 前端  
+### 前端(resources\views\demographics.blade.php)：  
 #### 1.年份的下拉選單預設值為108  
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/demographics_程式年份下拉.png)  
 #### 2.月份的下拉選單預設值為12  
@@ -230,7 +231,7 @@
 		&emsp;&emsp;}  
 	</span>
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/demographics_程式jsxy軸.png)  
-### 後端  
+### 後端(app\Http\Controllers\demographicsController.php)：  
 #### 1.$local為所有地區的名稱，用來當下拉選單  
 ####   *用groupby()將相同的地區名稱用成一群，不取到重覆的值  
 ####   *用pluck()只取值，並將所有的值存成陣列  
@@ -265,5 +266,6 @@
    	</span>  
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/demographics_程式後端讀取資料.png)  
 ### 資料庫  
+*參考資料：https://demographics.taichung.gov.tw/Demographic/Web/TCCReport02.aspx  
 *將0-4歲及5-9歲相加以此類推(為了減少欄位)  
 ![image](https://github.com/diana8772/homebuy/blob/master/public/image/資料庫demographics.png)  
